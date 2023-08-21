@@ -1,14 +1,8 @@
 <template>
   <div>
     <Header />
-    <MultipleChoiceQuestion
-      v-for="(question, index) in questions"
-      :key="index"
-      :question="question.question"
-      :choices="question.choices"
-      @update-selection="updateSelection(index, $event)"
-      class="question"
-    />
+    <MultipleChoiceQuestion v-for="(question, index) in questions" :key="index" :question="question.question"
+      :choices="question.choices" @update-selection="updateSelection(index, $event)" class="question" />
     <div class="finalizar">
       <button @click="showModal = true" v-if="allFieldsSelected">Enviar escolhas</button>
     </div>
@@ -111,6 +105,7 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .container {
   text-align: center;
   background-color: rgb(255, 255, 255);
@@ -124,10 +119,10 @@ export default {
   display: flex;
   justify-content: center;
   margin: 30px 0;
-  
+
 }
 
-.finalizar > button {
+.finalizar>button {
   padding: 10px 20px;
   background-color: gold;
   border-radius: 5px;
@@ -135,7 +130,7 @@ export default {
   cursor: pointer;
 }
 
-.finalizar > button:hover {
+.finalizar>button:hover {
   background-color: #9aff98;
   font-weight: bold;
 }
@@ -157,7 +152,7 @@ export default {
   height: 50%;
 }
 
-.close > button {
+.close>button {
   padding: 10px 20px;
   background-color: gold;
   border-radius: 5px;
@@ -179,10 +174,34 @@ export default {
   transition: height 0.3s;
 }
 
-.a { width: var(--a, 0); background-color: red; border-radius: 0 20px 20px 0; }
-.b { width: var(--b, 0); background-color: blue; border-radius: 0 20px 20px 0; }
-.c { width: var(--c, 0); background-color: green; border-radius: 0 20px 20px 0; }
-.d { width: var(--d, 0); background-color: orange; border-radius: 0 20px 20px 0; }
+.a {
+  width: var(--a, 0);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #ff0000 100%);
+  border-radius: 0 20px 20px 0;
+}
+
+.b {
+  width: var(--b, 0);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #0000ff 100%);
+  border-radius: 0 20px 20px 0;
+}
+
+.c {
+  width: var(--c, 0);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #008000 100%);
+  border-radius: 0 20px 20px 0;
+}
+
+.d {
+  width: var(--d, 0);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #ffa500 100%);
+  border-radius: 0 20px 20px 0;
+}
+
 
 .grid-bars {
   display: flex;
@@ -195,6 +214,4 @@ export default {
   box-shadow: 3px 3px 5px 0 #ccc;
   margin-right: 10px;
   padding: 3px;
-}
-
-</style>
+}</style>
