@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div class="first-title">
-      <img src="../public/dics.webp" width="100" alt="perfil comportamental">
-      <h4>Avaliação de perfil comportamental</h4>
-      <p>25 perguntas de múltipla escolha:</p>
-    </div>
+    <Header />
     <MultipleChoiceQuestion
       v-for="(question, index) in questions"
       :key="index"
@@ -13,10 +9,11 @@
       @update-selection="updateSelection(index, $event)"
       class="question"
     />
-    <br>
     <div class="finalizar">
       <button @click="showModal = true" v-if="allFieldsSelected">Enviar escolhas</button>
     </div>
+    <br>
+    <Footer />
     <div class="modal" v-if="showModal" :selectedCounts="selectedCounts" @close-modal="showModal = false">
       <div class="container">
         <div class="title">
@@ -24,31 +21,22 @@
         </div>
         <div class="chart-container">
           <div class="grid-bars">
-            <p>Determinado</p>
+            <p>Dominante</p>
             <div class="bar a" :style="{ '--a': selectedCounts['a'] * 20 + 'px' }"></div>
           </div>
           <div class="grid-bars">
-            <p>Confiante</p>
+            <p>Influente</p>
             <div class="bar b" :style="{ '--b': selectedCounts['b'] * 20 + 'px' }"></div>
           </div>
           <div class="grid-bars">
-            <p>Consistente</p>
+            <p>Estável</p>
             <div class="bar c" :style="{ '--c': selectedCounts['c'] * 20 + 'px' }"></div>
           </div>
           <div class="grid-bars">
-            <p>Preciso</p>
+            <p>Conforme</p>
             <div class="bar d" :style="{ '--d': selectedCounts['d'] * 20 + 'px' }"></div>
           </div>
         </div>
-        <!-- Determinado: {{ selectedCounts['a'] }}
-        <br>
-        Confiante: {{ selectedCounts['b'] }}
-        <br>
-        Consistente: {{ selectedCounts['c'] }}
-        <br>
-        Preciso: {{ selectedCounts['d'] }}
-        <br>
-        Total de seleções: {{ totalSelections }} -->
         <div class="close">
           <button @click="closeModal">Fechar</button>
         </div>
@@ -58,12 +46,16 @@
 </template>
 
 <script>
+import Header from './components/Header.vue';
 import MultipleChoiceQuestion from './components/MultipleChoiceQuestion.vue';
+import Footer from './components/Footer.vue';
 import { questions } from './mock/mockData.js';
 
 export default {
   components: {
-    MultipleChoiceQuestion
+    Header,
+    MultipleChoiceQuestion,
+    Footer,
   },
   data() {
     return {
@@ -87,8 +79,11 @@ export default {
   },
   methods: {
     closeModal() {
-      window.location.reload();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       this.showModal = false;
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
     },
     updateSelection(questionIndex, selectedChoice) {
       const previousChoice = this.questions[questionIndex].selectedLetter;
@@ -106,17 +101,6 @@ export default {
 </script>
 
 <style>
-
-.first-title {
-  text-align: center;
-  padding: 30px;
-}
-
-.first-title p {
-  margin-top: 10px;
-  font-size: 13px;
-}
-
 .modal {
   background-color: rgba(0, 0, 0, 0.367);
   position: fixed;
