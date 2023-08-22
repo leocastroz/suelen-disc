@@ -43,11 +43,6 @@ export const questions = [
       },
       {
         question: 'O que mais define você ?',
-        choices: ['a) Decidido', 'b) Flexível', 'c) Previsível', 'd) Sistemático'],
-        selectedLetter: ''
-      },
-      {
-        question: 'O que mais define você ?',
         choices: ['a) Inovador', 'b) Comunicativo', 'c) Agradável', 'd) Elegante'],
         selectedLetter: ''
       },
