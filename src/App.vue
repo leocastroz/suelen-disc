@@ -16,21 +16,29 @@
         <div class="chart-container">
           <div class="grid-bars">
             <p>Dominante</p>
-            <div class="bar a" :style="{ '--a': selectedCounts['a'] * 20 + 'px' }"></div>
+            <div class="bar a" :style="{ '--a': selectedCounts['a'] * 20 + 'px' }"> 
+              {{ selectedCounts['a'] }} ({{ (selectedCounts['a'] / totalSelections * 100).toFixed(2) }}%)
+            </div>
           </div>
           <div class="grid-bars">
             <p>Influente</p>
-            <div class="bar b" :style="{ '--b': selectedCounts['b'] * 20 + 'px' }"></div>
+            <div class="bar b" :style="{ '--b': selectedCounts['b'] * 20 + 'px' }">
+              {{ selectedCounts['b'] }} ({{ (selectedCounts['b'] / totalSelections * 100).toFixed(2) }}%)
+            </div>
           </div>
           <div class="grid-bars">
             <p>Estável</p>
-            <div class="bar c" :style="{ '--c': selectedCounts['c'] * 20 + 'px' }"></div>
+            <div class="bar c" :style="{ '--c': selectedCounts['c'] * 20 + 'px' }">
+              {{ selectedCounts['c'] }} ({{ (selectedCounts['c'] / totalSelections * 100).toFixed(2) }}%)
+            </div>
           </div>
           <div class="grid-bars">
             <p>Conforme</p>
-            <div class="bar d" :style="{ '--d': selectedCounts['d'] * 20 + 'px' }"></div>
+            <div class="bar d" :style="{ '--d': selectedCounts['d'] * 20 + 'px' }">
+              {{ selectedCounts['d'] }} ({{ (selectedCounts['d'] / totalSelections * 100).toFixed(2) }}%)
+            </div>
           </div>
-        </div>
+        </div>        
         <div class="close">
           <button @click="closeModal">Fechar</button>
         </div>
@@ -179,6 +187,9 @@ export default {
   background: rgb(255, 255, 255);
   background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #ff0000 100%);
   border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
 }
 
 .b {
@@ -186,6 +197,9 @@ export default {
   background: rgb(255, 255, 255);
   background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #0000ff 100%);
   border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
 }
 
 .c {
@@ -193,6 +207,9 @@ export default {
   background: rgb(255, 255, 255);
   background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #008000 100%);
   border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
 }
 
 .d {
@@ -200,6 +217,9 @@ export default {
   background: rgb(255, 255, 255);
   background: linear-gradient(90deg, rgba(255, 255, 255, 1) 2%, #ffa500 100%);
   border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
 }
 
 
